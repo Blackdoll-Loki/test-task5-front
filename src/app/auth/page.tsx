@@ -18,13 +18,14 @@ const AuthPage = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    const railwayUrl = 'https://test-task5-back-production.up.railway.app/';
+    const railwayUrl = 'https://test-task5-back-production.up.railway.app';
     
-    const url = isLogin ? `${railwayUrl}/login` : `${railwayUrl}/register`; // відповідні URL для API
+    const url = isLogin ? `${railwayUrl}/auth/login` : `${railwayUrl}/auth/register`; // відповідні URL для API
     const response = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
+      mode: 'cors',
     });
 
     if (response.ok) {
